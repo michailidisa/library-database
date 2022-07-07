@@ -1,0 +1,228 @@
+
+-- DELETE ALL PREVIOUS VALUES
+
+DELETE FROM loans;
+DELETE FROM copies;
+DELETE FROM books;
+DELETE FROM authors;
+DELETE FROM borrowers;
+
+
+
+-- INSERTS
+
+--Borrowers
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY' NLS_DATE_LANGUAGE='english'; 
+select sysdate from dual; 
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'GRACE','SLICK','GRACESLICK@EMAIL.COM','2310735500','F','11-FEB-1993');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'JIM','MORRISON','JIMMORISON@EMAIL.COM','2310200200','M','13-DEC-1995');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'GEORGE','HARRISON','GEORGEHARISSON@EMAIL.COM','2331030300','M','13-MAY-2005');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL, 'JIMMY','PAGE','JIMMYPAGE@EMAIL.COM','2385080800','M','20-MAR-1997');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'IAN','ANDERSON','IANANDERSON@EMAIL.COM','2310444444','M','4-APR-2004');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'ALEX','MICHAILIDIS','ALEXMICHAILIDIS@EMAIL.COM','2310444467','20-MAY-1995');
+
+INSERT INTO borrowers 
+(id,fname,lname,email,tel_no,gender,date_of_birth)
+VALUES (seq_borrowers_id.NEXTVAL,'KLIMIS','KEFSIKOGLOU','KLIMISKEF@EMAIL.COM','2310449871','M','3-JAN-1975');
+
+INSERT INTO borrowers 
+VALUES (seq_borrowers_id.NEXTVAL,'ANASTASIA','PTINO','ANASTASIAPTINO@EMAIL.COM','2311284171','F','3-SEP-1970');
+
+INSERT INTO borrowers 
+VALUES (seq_borrowers_id.NEXTVAL,'MARIE','CURIE - WAS','MARIECURIE@EMAIL.COM','6944284171','F','3-OCT-1988');
+
+INSERT INTO borrowers 
+VALUES (seq_borrowers_id.NEXTVAL,'MARGARET','HEAFIELD','MARGARETHEAFIELD@EMAIL.COM','6977284171','F','3-NOV-1997');
+
+INSERT INTO borrowers 
+VALUES (seq_borrowers_id.NEXTVAL,'VALENTINA','TERESHKOVA','VALENTINAT@EMAIL.COM','6996284171','F','3-AUG-1999');
+
+INSERT INTO borrowers 
+VALUES (seq_borrowers_id.NEXTVAL,'YIANNIS','JASON','YIANNISJ@EMAIL.COM','6996284172','M','3-JUL-2001');
+
+
+
+
+
+-- Authors
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'MARCEL', 'PROUST', '10-JUL-1871', '18-NOV-1922', 'FRANCE', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'AGGELOS', 'KATSAGG', '10-OCT-1971', NULL, 'GREECE', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'HENRY', 'KORTH', '10-OCT-1971', NULL, 'ENGLAND', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'SHEL', 'SILVERSTERIN', '12-MAY-1951', NULL, 'ENGLAND', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'THOMAS', 'HARRIS', '12-JUN-1946', '12-JUN-1996', 'ENGLAND', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'THOMAS', 'PAPADOPOULOS', '12-MAY-1975', NULL , 'GREECE', 'M'); 
+
+INSERT INTO authors (id,fname,lname,date_birth,date_death, country_origin,gender)
+VALUES (seq_authors_id.NEXTVAL, 'KATERINA', 'ADAM', '12-MAY-1985', NULL , 'RUSSIA', 'F'); 
+
+INSERT INTO authors 
+VALUES (seq_authors_id.NEXTVAL, 'CHRISTINA', 'RUSLA', '12-MAY-1975', NULL , 'UKRAINE', 'F'); 
+
+INSERT INTO authors 
+VALUES (seq_authors_id.NEXTVAL, 'SYLVIA', 'PLATH', '12-MAY-1990', NULL , 'USA', 'O'); 
+
+
+
+-- Books 
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('1234567891234', 'IN SEARCH OF LOST TIME', '00001', 'NOVEL', '01',  '500', '18-OCT-1900', '20.50');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('1234567891235', 'IN SEARCH OF LOST TIME', '00001', 'NOVEL', '02', '500', '20-NOV-1905', '30.50');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('9781108480712', 'MACHINE LEARNING REFINED', '00002', 'SCIENCE', '12', '593', '20-JUL-2016', '100.50');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('9781108480713', 'MACHINE LEARNING REFINED', '00002', 'SCIENCE', '13', '603', '10-OCT-2018', '120.50');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('9781108485013', 'DATABASE SYSTEM CONCEPTS', '00003', 'SCIENCE', '07', '603', '10-OCT-2006', '90.20');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('0781108485023', 'A LIGHT IN THE ATTIC', '00004', 'CHILDREN', '01', '201', '10-MAY-1981', '30.20');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('9081108485022', 'RED DRAGON', '00005', 'HORROR', '01', '501', '01-JUN-1981', '10.20');
+
+INSERT INTO books (isbn,title,author_id,genre,edition,n_pages,pub_date,price)
+VALUES ('9081104586012', 'CHRONICLE OF A DEATH FORETOLD', '00006', 'SCI-FI', '01', '250', '01-JUN-2001', '40.20');
+
+INSERT INTO books 
+VALUES ('9085304587012', 'BLUES FOR A BLACK CAT', '00007', 'HORROR', '01', '400', '01-JUN-2011', '50.00');
+
+INSERT INTO books 
+VALUES ('9085304588012', 'THE COLLECTED MISERY POEMS', '00009', 'POETRY', '01', '149', '01-JUN-2018', '90.00');
+
+INSERT INTO books 
+VALUES ('9085304589012', 'THE MISERY POEMS', '00008', 'POETRY', '01', '209', '01-JUN-2010', '70.00');
+
+
+
+-- Copies 
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('123456789123401', '1234567891234', '18-OCT-2010');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('123456789123402', '1234567891234', '18-OCT-2010');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('123456789123501', '1234567891235', '18-MAY-2012');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('978110848071201', '9781108480712', '18-MAY-2014');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('978110848071301', '9781108480713', '18-MAY-2015');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('978110848071302', '9781108480713', '18-MAY-2015');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('978110848501302', '9781108485013', '18-MAY-2016');
+
+INSERT INTO copies (cop_id,book_isbn,pur_date)
+VALUES ('078110848502301', '0781108485023', '18-MAY-2016');
+
+INSERT INTO copies 
+VALUES ('908110848502201', '9081108485022', '18-MAY-2017');
+
+INSERT INTO copies 
+VALUES ('908110458601201', '9081104586012', '18-MAY-2017');
+
+INSERT INTO copies 
+VALUES ('908530458701201', '9085304587012', '18-MAY-2018');
+
+INSERT INTO copies 
+VALUES ('908530458801201', '9085304588012', '18-MAY-2020');
+
+INSERT INTO copies 
+VALUES ('908530458901201', '9085304589012', '18-JUN-2020');
+
+
+-- Loans 
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00001', '123456789123401', '20-JAN-2018','30-JAN-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00001', '908530458801201', '01-JUN-2018','1-JUL-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00002', '123456789123402', '01-JUN-2018','28-JUN-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00002', '123456789123401', '20-OCT-2018','30-OCT-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00003', '123456789123501', '21-OCT-2018','30-OCT-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00004', '978110848071201', '21-NOV-2018','30-NOV-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00005', '978110848071301', '22-NOV-2018','1-DEC-2018');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00006', '978110848071302', '01-JAN-2019','12-JAN-2019');
+
+INSERT INTO loans (b_id,cop_id,loan_date,return_date)
+VALUES ('00007', '978110848501302', '01-FEB-2019','12-FEB-2019');
+
+INSERT INTO loans 
+VALUES ('00008', '078110848502301', '01-MAR-2019','12-MAR-2019');
+
+INSERT INTO loans 
+VALUES ('00009', '908110848502201', '02-APR-2019','13-APR-2019');
+
+INSERT INTO loans 
+VALUES ('00010', '908110458601201', '01-MAY-2021','04-MAY-2021');
+
+INSERT INTO loans 
+VALUES ('00011', '908530458701201', '01-DEC-2021','10-DEC-2021');
+
+INSERT INTO loans 
+VALUES ('00012', '908530458801201', '12-DEC-2021', NULL);
+
+
+
+-- SHOW TABLES 
+
+SELECT * FROM borrowers;
+SELECT * FROM authors;
+SELECT * FROM books;
+SELECT * FROM copies;
+SELECT * FROM loans;
+
+

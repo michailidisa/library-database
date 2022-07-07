@@ -1,0 +1,168 @@
+-- CONSTRAINTS
+
+--PRIMARY KEYS
+ALTER TABLE borrowers
+ADD CONSTRAINT pk_borrowers_id
+PRIMARY KEY (id);
+
+ALTER TABLE authors
+ADD CONSTRAINT pk_authors_id
+PRIMARY KEY (id);
+
+ALTER TABLE books
+ADD CONSTRAINT pk_isbn
+PRIMARY KEY (isbn);
+
+ALTER TABLE copies
+ADD CONSTRAINT pk_cop_id
+PRIMARY KEY (cop_id);
+
+ALTER TABLE loans
+ADD CONSTRAINT pk_loans
+PRIMARY KEY (b_id,cop_id,loan_date);
+
+--FOREIGN KEYS
+
+ALTER TABLE books
+ADD CONSTRAINT fk_author_id
+FOREIGN KEY (author_id)
+REFERENCES authors (id) on delete set null;
+
+ALTER TABLE copies
+ADD CONSTRAINT fk_book_isbn
+FOREIGN KEY (book_isbn)
+REFERENCES books (isbn) on delete set null;
+
+ALTER TABLE loans
+ADD CONSTRAINT fk_loan_borrowers
+FOREIGN KEY (b_id)
+REFERENCES borrowers (id) on delete cascade;
+
+ALTER TABLE loans
+ADD CONSTRAINT fk_loan_copy
+FOREIGN KEY (cop_id)
+REFERENCES copies (cop_id) on delete cascade;
+
+
+--UNIQUE KEYS
+ALTER TABLE borrowers
+ADD CONSTRAINT uk_email
+UNIQUE (email);
+
+
+--CHECK CONSTRAINTS
+ALTER TABLE borrowers
+ADD CONSTRAINT ck_borrowers_fname
+CHECK (fname = UPPER(fname));
+
+ALTER TABLE borrowers
+ADD CONSTRAINT ck_borrowers_lname
+CHECK (lname = UPPER(lname));
+
+ALTER TABLE borrowers
+ADD CONSTRAINT ck_borrowers_email
+CHECK (email = UPPER(email));
+
+ALTER TABLE borrowers
+ADD CONSTRAINT ck_borrowers_tel
+CHECK (tel_no = UPPER(tel_no));
+
+ALTER TABLE borrowers
+ADD CONSTRAINT ck_borrowers_gender
+CHECK (GENDER IN ('F','M', 'O'));
+
+
+-- Authors 
+ALTER TABLE authors
+ADD CONSTRAINT ck_authors_fname
+CHECK (fname = UPPER(fname));
+
+ALTER TABLE authors
+ADD CONSTRAINT ck_authors_lname
+CHECK (lname = UPPER(lname));
+
+ALTER TABLE authors
+ADD CONSTRAINT ck_authors_date_death
+CHECK (date_death > date_birth);
+
+ALTER TABLE authors
+ADD CONSTRAINT ck_authors_country
+CHECK (country_origin = UPPER(country_origin));
+
+ALTER TABLE authors
+ADD CONSTRAINT ck_authors_gender
+CHECK (GENDER IN ('F','M', 'O'));
+
+
+
+-- Books 
+
+ALTER TABLE books
+ADD CONSTRAINT ck_books_title
+CHECK (title = UPPER(title));
+
+ALTER TABLE books
+ADD CONSTRAINT ck_books_genre
+CHECK (GENRE IN ('ACTION','HISTORY', 'ANTHOLOGY', 'CHILDREN', 'CLASSIC', 'COMIC BOOK', 'CRIME', 'DRAMA', 'FAIRYTALE', 'FANTASY', 'NOVEL', 'HORROR', 'MYSTERY', 'PARANORMAL', 'PICTURE BOOK', 'POETRY', 'THRILLER','ROMACE', 'SATIRE', 'SCI-FI', 'THRILLER', 'WESTERN', 'ART', 'AUTOBIOGRAPHY', 'BUSINESS', 'CRAFTS', 'DIARY', 'DICTIONARY', 'ENCYCLOPEDIA', 'GUIDE', 'HEALTH', 'HUMOR', 'JOURNAL', 'MATH', 'PHILOSOPHY', 'RELIGION', 'TEXTBOOK', 'SCIENCE', 'TRAVEL', 'SPORTS'));
+
+ALTER TABLE books
+ADD CONSTRAINT ck_books_genre_nn
+CHECK (GENRE IS NOT NULL);
+
+ALTER TABLE books
+ADD CONSTRAINT ck_books_n_pages
+CHECK (n_pages > 0);
+
+
+ALTER TABLE books
+ADD CONSTRAINT ck_books_price
+CHECK (price > 0);
+
+-- Loans 
+
+ALTER TABLE loans
+ADD CONSTRAINT ck_loans_return_date
+CHECK (return_date >= loan_date);
+
+--DEFAULTS
+ALTER TABLE borrowers
+MODIFY  (gender
+DEFAULT 'O');
+
+ALTER TABLE authors
+MODIFY  (gender
+DEFAULT 'O');
+
+ALTER TABLE authors
+MODIFY  (country_origin
+DEFAULT 'GREECE');
+
+-- CREATE SEQUENCES
+
+CREATE SEQUENCE seq_borrowers_id
+INCREMENT BY 1
+START WITH 1
+NOCYCLE;
+
+CREATE SEQUENCE seq_authors_id
+INCREMENT BY 1
+START WITH 1
+NOCYCLE;
+
+-- Show them All
+select * FROM USER_CONSTRAINTS
+where constraint_name Like 'PK%';
+
+select * FROM USER_CONSTRAINTS
+where constraint_name Like 'FK%';
+
+select * FROM USER_CONSTRAINTS
+where constraint_name Like 'CK%';
+
+select * FROM USER_CONSTRAINTS
+where constraint_name Like 'UK%';
+
+select * FROM USER_CONSTRAINTS; 
+
+select * from all_sequences
+where sequence_name Like 'SEQ%';

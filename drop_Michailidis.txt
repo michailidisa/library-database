@@ -1,0 +1,110 @@
+-- DROP COMMANDS
+
+-- DROP SEQUENCIES
+
+DROP SEQUENCE seq_borrowers_id;
+DROP SEQUENCE seq_authors_id;
+
+-- DROP CONSTRAINTS
+
+-- Check
+ALTER TABLE loans
+DROP CONSTRAINT ck_loans_return_date;
+
+ALTER TABLE books
+DROP CONSTRAINT ck_books_price;
+
+ALTER TABLE books
+DROP CONSTRAINT ck_books_n_pages;
+
+ALTER TABLE books
+DROP CONSTRAINT ck_books_genre_nn;
+
+ALTER TABLE books
+DROP CONSTRAINT ck_books_genre;
+
+ALTER TABLE books
+DROP CONSTRAINT ck_books_title;
+
+ALTER TABLE authors
+DROP CONSTRAINT ck_authors_gender;
+
+ALTER TABLE authors
+DROP CONSTRAINT ck_authors_country;
+
+ALTER TABLE authors
+DROP CONSTRAINT ck_authors_date_death;
+
+ALTER TABLE authors
+DROP CONSTRAINT ck_authors_lname;
+
+ALTER TABLE authors
+DROP CONSTRAINT ck_authors_fname;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT ck_borrowers_gender;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT ck_borrowers_tel;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT ck_borrowers_email;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT ck_borrowers_lname;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT ck_borrowers_fname;
+
+-- UNIQUE
+
+ALTER TABLE borrowers
+DROP CONSTRAINT uk_email;
+
+-- FOREIGN KEYS
+
+ALTER TABLE loans
+DROP CONSTRAINT fk_loan_copy;
+
+ALTER TABLE loans
+DROP CONSTRAINT fk_loan_borrowers;
+
+ALTER TABLE copies
+DROP CONSTRAINT fk_book_isbn;
+
+ALTER TABLE books
+DROP CONSTRAINT fk_author_id;
+
+-- PRIMARY KEYS
+
+ALTER TABLE loans
+DROP CONSTRAINT pk_loans;
+
+ALTER TABLE copies
+DROP CONSTRAINT pk_cop_id;
+
+ALTER TABLE books
+DROP CONSTRAINT pk_isbn;
+
+ALTER TABLE authors
+DROP CONSTRAINT pk_authors_id;
+
+ALTER TABLE borrowers
+DROP CONSTRAINT pk_borrowers_id;
+
+
+-- DROP TABLES
+
+DROP TABLE loans;
+DROP TABLE copies;
+DROP TABLE books;
+DROP TABLE authors;
+DROP TABLE borrowers;
+
+-- Show that they don't exist
+
+SELECT * FROM borrowers;
+SELECT * FROM authors;
+SELECT * FROM books;
+SELECT * FROM copies;
+SELECT * FROM loans;
