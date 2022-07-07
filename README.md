@@ -1,6 +1,6 @@
-# library-database (This is Part of courseworkd of the course Advanced Databases)
+# library-database 
 
-Basic database for a library.
+Basic database for a library. (This is Part of courseworkd of the course Advanced Databases)
 
 Database Description:
 Below are the business rules for a basic database for a library. Read them through and complete the requirements topic below.
