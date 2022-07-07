@@ -1,4 +1,5 @@
-# library-database
+# library-database (This is Part of courseworkd of the course Advanced Databases)
+
 Basic database for a library.
 
 Database Description:
